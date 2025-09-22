@@ -1,23 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>DJ-S3B | Official Links</title>
   <link rel="icon" type="image/png" href="images/S3B.png">
   <style>
+    /* ---------- THEME TOKENS ---------- */
+    :root {
+      --bg: #000;
+      --text: #fff;
+      --muted: #aaa;
+      --btn-bg: #fff;
+      --btn-text: #000;
+      --btn-border: #fff;
+      --accent: #0ff;
+    }
+    [data-theme="light"] {
+      --bg: #fff;
+      --text: #111;
+      --muted: #555;
+      --btn-bg: #111;
+      --btn-text: #fff;
+      --btn-border: #111;
+      --accent: #06c; /* subtle blue in light mode */
+    }
+
+    /* ---------- BASE STYLES ---------- */
+    * { box-sizing: border-box; }
     body {
-      background-color: black;
-      color: white;
-      font-family: 'Helvetica Neue', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Helvetica Neue', Arial, sans-serif;
       text-align: center;
       margin: 0;
       padding: 0;
     }
 
+    /* Toggle button */
+    .theme-toggle {
+      position: fixed;
+      top: 12px;
+      right: 12px;
+      border: 1.5px solid var(--btn-border);
+      background: transparent;
+      color: var(--text);
+      padding: 10px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 700;
+      letter-spacing: .2px;
+      transition: box-shadow .25s ease, transform .1s ease, border-color .25s ease;
+      user-select: none;
+    }
+    .theme-toggle:hover { box-shadow: 0 0 10px var(--accent); border-color: var(--accent); }
+    .theme-toggle:active { transform: scale(0.98); }
+
     h1 {
       font-size: 6vw;
-      margin-top: 8vw;
+      margin-top: 10vw;
       font-weight: bold;
     }
 
@@ -31,21 +72,27 @@
     }
 
     a {
-      background-color: white;
-      color: black;
+      background-color: var(--btn-bg);
+      color: var(--btn-text);
       padding: 4vw 0;
       text-decoration: none;
       font-weight: bold;
-      border: 2px solid white;
-      transition: 0.3s ease;
+      border: 2px solid var(--btn-border);
+      transition: 0.25s ease;
       width: 80%;
-      max-width: 300px;
+      max-width: 320px;
       font-size: 4.5vw;
-      border-radius: 8px;
+      border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 12px;
+    }
+    a:hover {
+      background-color: transparent;
+      color: var(--text);
+      border-color: var(--accent);
+      box-shadow: 0 0 12px var(--accent);
     }
 
     a img {
@@ -53,73 +100,99 @@
       max-height: 32px;
       min-width: 24px;
     }
-
-    .discord-logo {
-      height: 9vw;
-      max-height: 48px;
-      min-width: 32px;
-    }
-
-    a:hover {
-      background-color: black;
-      color: white;
-      border: 2px solid white;
-    }
+    .discord-logo { height: 9vw; max-height: 48px; min-width: 32px; }
 
     footer {
       margin-top: 10vw;
       font-size: 3vw;
-      color: #777;
+      color: var(--muted);
     }
 
     @media (min-width: 600px) {
-      h1 {
-        font-size: 3em;
-      }
-
-      a {
-        font-size: 1em;
-        padding: 15px 30px;
-      }
-
-      a img {
-        height: 24px;
-      }
-
-      .discord-logo {
-        height: 32px;
-      }
-
-      footer {
-        font-size: 0.9em;
-      }
+      h1 { font-size: 3em; }
+      a { font-size: 1.05em; padding: 15px 30px; }
+      a img { height: 24px; }
+      .discord-logo { height: 32px; }
+      footer { font-size: 0.95em; }
     }
   </style>
 </head>
 <body>
-  <h1>DJ‑S3B</h1>
+  <!-- Toggle -->
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode" title="Toggle dark/light mode">
+    🌙 Light mode
+  </button>
+
+  <h1>DJ-S3B</h1>
+
   <div class="link-container">
-    <a href="https://youtube.com/@s3b-dj?si=uinAHSNb98LMf5ZI" target="_blank">
-      <img src="images/YoutubeLogo.webp" alt="YouTube Logo" />
+    <a href="https://youtube.com/@s3b-dj?si=uinAHSNb98LMf5ZI" target="_blank" rel="noopener">
+      <img src="images/YoutubeLogo.webp" alt="Open YouTube channel" />
       YouTube Channel
     </a>
-    <a href="https://open.spotify.com/artist/4Ah84RRSc5zh2U1grcdd2j?si=xIyimATqQgmbEHsZyT-yxg" target="_blank">
-      <img src="images/SpotifyLogo.png" alt="Spotify Logo" />
+    <a href="https://open.spotify.com/artist/4Ah84RRSc5zh2U1grcdd2j?si=xIyimATqQgmbEHsZyT-yxg" target="_blank" rel="noopener">
+      <img src="images/SpotifyLogo.png" alt="Listen on Spotify" />
       Spotify
     </a>
-    <a href="https://music.apple.com/us/artist/dj-s3b/1826928952" target="_blank">
-      <img src="images/AppleMusicLogo.png" alt="Apple Music Logo" />
+    <a href="https://music.apple.com/us/artist/dj-s3b/1826928952" target="_blank" rel="noopener">
+      <img src="images/AppleMusicLogo.png" alt="Listen on Apple Music" />
       Apple Music
     </a>
-    <a href="https://s3b-shop.fourthwall.com" target="_blank">🛍️ Merch Store</a>
-    <a href="https://discord.gg/rukbkNrf" target="_blank">
-      <img src="images/DiscordLogo.webp" alt="Discord Logo" class="discord-logo" />
+    <a href="https://s3b-shop.fourthwall.com" target="_blank" rel="noopener">🛍️ Merch Store</a>
+    <a href="https://discord.gg/rukbkNrf" target="_blank" rel="noopener">
+      <img src="images/DiscordLogo.webp" alt="Join the Discord server" class="discord-logo" />
       Discord
     </a>
   </div>
+
   <footer>
-    <p>© 2025 DJ‑S3B. All rights reserved.</p>
+    <p>© 2025 DJ-S3B. All rights reserved.</p>
   </footer>
+
+  <script>
+    (function () {
+      const STORAGE_KEY = 'theme';
+      const root = document.documentElement;
+      const toggle = document.getElementById('themeToggle');
+
+      function applyTheme(theme) {
+        root.setAttribute('data-theme', theme);
+        // Update button label
+        if (theme === 'dark') {
+          toggle.textContent = '🌙 Light mode';
+          toggle.setAttribute('aria-pressed', 'false');
+        } else {
+          toggle.textContent = '☀️ Dark mode';
+          toggle.setAttribute('aria-pressed', 'true');
+        }
+      }
+
+      // Determine initial theme: saved -> system -> default dark
+      const saved = localStorage.getItem(STORAGE_KEY);
+      let initial = saved;
+      if (!initial) {
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        initial = prefersDark ? 'dark' : 'light';
+      }
+      applyTheme(initial);
+
+      // Toggle handler
+      toggle.addEventListener('click', () => {
+        const current = root.getAttribute('data-theme') || 'dark';
+        const next = current === 'dark' ? 'light' : 'dark';
+        applyTheme(next);
+        localStorage.setItem(STORAGE_KEY, next);
+      });
+
+      // Optional: react live if system theme changes and user hasn't chosen manually
+      // Comment out if you want to always stick to saved choice once set.
+      if (!saved && window.matchMedia) {
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+          const next = e.matches ? 'dark' : 'light';
+          applyTheme(next);
+        });
+      }
+    })();
+  </script>
 </body>
 </html>
-<!-- hello knox and sebby -->
